@@ -66,7 +66,9 @@ def create_record(tablename, **payload):
     :returns: TODO
 
     """
-    return _client_for_table(tablename).create(payload=payload)
+    response = _client_for_table(tablename).create(payload=payload)
+
+    return dict(response)
 
 
 def get_record(tablename, **kwargs):
