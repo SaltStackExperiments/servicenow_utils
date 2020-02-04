@@ -58,6 +58,17 @@ def __virtual__():
     return virtual_return
 
 
+def create_record(tablename, **payload):
+    """Create a record on `tablename`
+
+    :tablename: TODO
+    :**payload: TODO
+    :returns: TODO
+
+    """
+    return _client_for_table(tablename).create(payload=payload)
+
+
 def get_record(tablename, **kwargs):
     """Fetch a record from the given table in ServiceNow
 

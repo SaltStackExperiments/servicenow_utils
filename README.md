@@ -1,2 +1,3 @@
-# servicenow_utils
-SaltStack ServiceNow module, runners, etc
+# SaltStack Utilities for working with ServiceNow
+
+Unofficial SaltStack ServiceNow module, runners, etc
