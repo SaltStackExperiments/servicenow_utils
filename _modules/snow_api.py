@@ -106,6 +106,19 @@ def update_record(tablename, query_string, **payload):
         return record.update(payload=payload).one()
 
 
+def get_incident(incident_number, key='number'):
+    """Get an incident by number
+
+    :incident_number: TODO
+    :returns: TODO
+
+    """
+    incident = _client_for_table('incident')
+    ret = incident.get(query={key: incident_number}, stream=True)
+
+    return ret.first()
+
+
 def _client_for_table(tablename):
     """Get the Service Now Client
 
@@ -121,19 +134,6 @@ def _client_for_table(tablename):
 
     # Define a resource, here we'll use the incident table API
     return c.resource(api_path='/table/{}'.format(tablename))
-
-
-def get_incident(incident_number, key='number'):
-    """Get an incident by number
-
-    :incident_number: TODO
-    :returns: TODO
-
-    """
-    incident = _client_for_table('incident')
-    ret = incident.get(query={key: incident_number}, stream=True)
-
-    return ret.first()
 
 
 def _get_response(tablename, **kwargs):
